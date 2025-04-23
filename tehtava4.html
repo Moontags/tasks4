@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Background Color</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            border: none;
+        }
+
+        #blueButton {
+            background-color: lightblue;
+            color: black;
+        }
+
+        #grayButton {
+            background-color: lightgray;
+            color: black;
+        }
+
+        #whiteButton {
+            background-color: #eee;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Change Background Color</h1>
+        <div class="button-container" id="colorButtonsContainer">
+            <button id="blueButton">Blue</button>
+            <button id="grayButton">Gray</button>
+            <button id="whiteButton">White</button>
+        </div>
+        <div id="backgroundColorInfo">Container background color is white.</div>
+        <a href="index.html" class="back-link">Back to main page</a>
+    </div>
+
+    <script>
+        const blueButton = document.getElementById('blueButton');
+        const grayButton = document.getElementById('grayButton');
+        const whiteButton = document.getElementById('whiteButton');
+        const colorButtonsContainer = document.getElementById('colorButtonsContainer');
+        const backgroundColorInfo = document.getElementById('backgroundColorInfo');
+
+        blueButton.addEventListener('click', function() {
+            colorButtonsContainer.style.backgroundColor = 'lightblue';
+            backgroundColorInfo.textContent = 'Container background color is blue.';
+        });
+
+        grayButton.addEventListener('click', function() {
+            colorButtonsContainer.style.backgroundColor = 'lightgray';
+            backgroundColorInfo.textContent = 'Container background color is gray.';
+        });
+
+        whiteButton.addEventListener('click', function() {
+            colorButtonsContainer.style.backgroundColor = 'white';
+            backgroundColorInfo.textContent = 'Container background color is white.';
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            colorButtonsContainer.style.backgroundColor = 'white';
+            backgroundColorInfo.textContent = 'Container background color is white.';
+        });
+    </script>
+</body>
+</html>

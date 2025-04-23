@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attaching Event Handlers in JavaScript</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Attaching Event Handlers in JavaScript</h1>
+        <div class="answer" id="answer16">
+            <h3>Different Ways to Attach Event Handlers:</h3>
+
+            <h4>1. HTML Attributes</h4>
+            <p>Attach handler directly in HTML.</p>
+            <pre><code>&lt;button onclick="console.log('Pressed!')"&gt;Press Here&lt;/button&gt;</code></pre>
+            <p><strong>Pros:</strong> Simple for basic actions.</p>
+            <p><strong>Cons:</strong> Mixes HTML/JS, limited logic, one handler only, confusing <code>this</code>.</p>
+
+            <h4>2. DOM Element Properties</h4>
+            <p>Set handler as a JS property.</p>
+            <pre><code id="code-property">
+const button1 = document.getElementById('button1');
+button1.onclick = function() {
+    console.log('Pressed via property!');
+};
+            </code></pre>
+            <button id="button1">Press Me (Property)</button>
+            <p><strong>Pros:</strong> Clearer separation than HTML attributes.</p>
+            <p><strong>Cons:</strong> One handler only, overwrites existing.</p>
+
+            <h4>3. <code>addEventListener()</code> Method</h4>
+            <p>Recommended method for attaching handlers.</p>
+            <pre><code id="code-listener">
+const button2 = document.getElementById('button2');
+button2.addEventListener('click', function() {
+    console.log('Pressed via listener!');
+});
+
+button2.addEventListener('mouseover', function() {
+    console.log('Mouse over!');
+});
+            </code></pre>
+            <button id="button2">Press Me (Listener)</button>
+            <p><strong>Pros:</strong> Multiple handlers, better control (<code>removeEventListener</code>), clear syntax, works with various objects, controls capturing/bubbling, predictable <code>this</code>.</p>
+            <p><strong>Cons:</strong> Slightly longer syntax.</p>
+
+            <p>In summary, <code>addEventListener()</code> is generally the best and most versatile way.</p>
+        </div>
+        <a href="index.html" class="back-link">Back to main page</a>
+    </div>
+
+    <script>
+        const button1 = document.getElementById('button1');
+        button1.onclick = function() {
+            console.log('The button was pressed via the property!');
+        };
+
+        const button2 = document.getElementById('button2');
+        button2.addEventListener('click', function() {
+            console.log('The button was pressed via the listener!');
+        });
+
+        button2.addEventListener('mouseover', function() {
+            console.log('Mouse over the element!');
+        });
+    </script>
+</body>
+</html>

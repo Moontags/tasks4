@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tehtävä 1 (HTML DOM)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>HTML DOM</h1>
+        <div class="answer" id="answer15">
+            <h3>A. What is HTML DOM?</h3>
+            <p>HTML DOM (Document Object Model) is a programming interface for HTML documents. It represents the structure of an HTML document as a tree of objects, where each object represents a part of the document, such as elements, attributes, and text. The DOM provides a way for programs (like JavaScript) to access and manipulate the content, structure, and style of HTML documents.</p>
+
+            <h3>B. JavaScriptweb pages by utilizing HTML DOM</h3>
+            <p>By utilizing the HTML DOM, JavaScript can dynamically interact with web pages. It can:</p>
+            <ul>
+                <li><strong>Change HTML elements:</strong> Modify attributes, content (text and HTML), and even add or remove elements.</li>
+                <li><strong>Change CSS styles:</strong> Dynamically alter the styling of elements.</li>
+                <li><strong>React to events:</strong> Handle user interactions like clicks, mouse movements, and form submissions.</li>
+                <li><strong>Add dynamic behavior:</strong> Create animations, interactive components, and update the page content without requiring a full reload.</li>
+                <li><strong>Validate user input:</strong> Check form data before submission.</li>
+            </ul>
+
+            <h3>C. Different kinds of HTML Node types</h3>
+            <ul>
+                <li><strong>Element Node:</strong> Represents an HTML element, such as <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, etc. It can have attributes and child nodes.</li>
+                <li><strong>Text Node:</strong> Represents the textual content within an HTML element or attribute. It does not have child nodes. For example, the text "Hello" inside <code>&lt;p&gt;Hello&lt;/p&gt;</code> is a text node.</li>
+                <li><strong>Attribute Node:</strong> Represents an attribute of an HTML element, such as <code>id</code>, <code>class</code>, <code>src</code>, etc. However, in the DOM tree, attributes are usually accessed as properties of Element nodes rather than as separate nodes.</li>
+                <li><strong>Document Node:</strong> Represents the entire HTML document. It is the root of the DOM tree and contains the <code>&lt;html&gt;</code> element.</li>
+                <li><strong>Comment Node:</strong> Represents HTML comments (<code>&lt;!-- comment --&gt;</code>).</li>
+            </ul>
+            <p>Commonly discussed node types include Element, Text, and Attribute (though the latter is often treated as a property).</p>
+
+            <h3>D. Critic</h3>
+            <p>While powerful, the HTML DOM has some criticisms:</p>
+            <ul>
+                <li><strong>Performance Overhead:</strong> Manipulating the DOM can be slow, especially for large and complex pages. Each change can trigger reflow and repaint operations in the browser, impacting performance.</li>
+                <li><strong>Verbosity:</strong> DOM APIs can sometimes be verbose and require a lot of code to perform simple tasks. Frameworks and libraries often abstract away some of this verbosity.</li>
+                <li><strong>Inconsistencies Across Browsers (Historically):</strong> While browser compatibility has improved significantly, historical inconsistencies in DOM implementations sometimes led to cross-browser compatibility issues.</li>
+                <li><strong>Not Always Directly Reflects HTML Structure:</strong> The DOM tree might not always perfectly mirror the HTML source, especially with browser corrections of malformed HTML.</li>
+            </ul>
+        </div>
+        <a href="index.html" class="back-link">Back to main page</a>
+    </div>
+</body>
+</html>

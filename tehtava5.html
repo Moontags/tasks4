@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controlling Event Propagation and Preventing Default</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .outer {
+            background-color: lightblue;
+            padding: 20px;
+        }
+
+        .inner {
+            background-color: lightcoral;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: lightgray;
+            text-decoration: none;
+            color: black;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Controlling Event Propagation</h1>
+        <div class="answer" id="answer19">
+            <h3>A. Why control event propagation?</h3>
+            <p>Event propagation is the order event handlers are called (capturing down, bubbling up).</p>
+            <p>Control propagation to:</p>
+            <ul>
+                <li><strong>Prevent unintended side effects:</strong> Stop child events triggering parent handlers unexpectedly (e.g., button in a list item). Use <code>stopPropagation()</code>.</li>
+                <li><strong>Implement specific UI patterns:</strong> Make components like dropdowns work correctly by limiting event scope.</li>
+                <li><strong>Optimize performance:</strong> Avoid unnecessary handler executions in complex structures.</li>
+                <li><strong>Create reusable components:</strong> Make components self-contained.</li>
+            </ul>
+            <div class="outer" id="outerDiv">
+                Outer div
+                <div class="inner" id="innerDiv">
+                    Inner div
+                    <button id="propagateButton">Click Me (Propagation)</button>
+                </div>
+            </div>
+            <p id="propagationInfo"></p>
+            <h2>Preventing the default action</h2>
+            <h3>B. Why prevent a default action?</h3>
+            <p>Browsers have default actions for elements/events (e.g., link navigation, form submit).</p>
+            <p>Prevent default actions using <code>preventDefault()</code> to:</p>
+            <ul>
+                <li><strong>Implement custom navigation:</strong> For SPAs, handle links without full reloads.</li>
+                <li><strong>Handle form submissions with JavaScript:</strong> For client-side validation or AJAX.</li>
+                <li><strong>Create custom UI controls:</strong> Override default behavior for custom functionality.</li>
+                <li><strong>Prevent accidental data loss:</strong> Confirm before leaving pages with unsaved changes.</li>
+            </ul>
+            <a href="https://example.com" id="preventDefaultLink">Visit Example (Prevent Default)</a>
+            <form id="preventDefaultForm">
+                <input type="text" placeholder="Enter text">
+                <button type="submit">Submit (Prevent Default)</button>
+            </form>
+            <p id="preventDefaultInfo"></p>
+        </div>
+        <a href="index.html" class="back-link">Back to main page</a>
+    </div>
+
+    <script>
+        const outerDiv = document.getElementById('outerDiv');
+        const innerDiv = document.getElementById('innerDiv');
+        const propagateButton = document.getElementById('propagateButton');
+        const propagationInfo = document.getElementById('propagationInfo');
+
+        outerDiv.addEventListener('click', function() {
+            propagationInfo.textContent += 'Outer div clicked (bubbling). ';
+        });
+
+        innerDiv.addEventListener('click', function(event) {
+            propagationInfo.textContent += 'Inner div clicked (bubbling). ';
+        });
+
+        propagateButton.addEventListener('click', function(event) {
+            propagationInfo.textContent += 'Button clicked (bubbling). ';
+            event.stopPropagation();
+        });
+
+        const preventDefaultLink = document.getElementById('preventDefaultLink');
+        const preventDefaultForm = document.getElementById('preventDefaultForm');
+        const preventDefaultInfo = document.getElementById('preventDefaultInfo');
+
+        preventDefaultLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            preventDefaultInfo.textContent = 'Link click prevented.';
+        });
+
+        preventDefaultForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            preventDefaultInfo.textContent = 'Form submission prevented.';
+        });
+    </script>
+</body>
+</html>

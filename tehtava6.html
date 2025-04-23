@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #balloon-container {
+            font-size: 20px;
+            cursor: default;
+            user-select: none; 
+            text-align: center;
+        }
+     
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Balloon</h1>
+        <div id="balloon-container">🎈</div>
+        <p>Press the up arrow (↑) to increase and the down arrow (↓) to decrease.</p>
+        <a href="index.html" class="back-link">Back to main page</a>
+    </div>
+
+    <script>
+        const balloonContainer = document.getElementById('balloon-container');
+        let currentSize = 20; 
+        const maxSize = 200; 
+        const growthFactor = 1.10; 
+
+        function updateBalloonSize() {
+            balloonContainer.style.fontSize = `${currentSize}px`;
+        }
+
+        function inflateBalloon() {
+            currentSize *= growthFactor;
+            updateBalloonSize();
+            if (currentSize > maxSize) {
+                explodeBalloon();
+            }
+        }
+
+        function deflateBalloon() {
+            currentSize /= growthFactor;
+            updateBalloonSize();
+        }
+
+        function explodeBalloon() {
+            balloonContainer.textContent = '💥';
+            document.removeEventListener('keydown', handleKeyPress);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'ArrowUp') {
+                inflateBalloon();
+                event.preventDefault(); 
+            } else if (event.key === 'ArrowDown') {
+                deflateBalloon();
+                event.preventDefault(); 
+            }
+        }
+
+        document.addEventListener('keydown', handleKeyPress);
+
+        
+        updateBalloonSize();
+    </script>
+</body>
+</html>

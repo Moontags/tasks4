@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Addition Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .message-area {
+            width: 100%;
+            min-height: 100px;
+            margin-bottom: 10px;
+            padding: 8px;
+            border: 1px solid #727171;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .add-button {
+            padding: 10px 15px;
+            background-color: #707171;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .add-button:hover {
+            background-color: #0056b3;
+        }
+
+        .message {
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add a New Message</h1>
+        <textarea id="newMessage" class="message-area" placeholder="Write a new message"></textarea>
+        <button id="addButton" class="add-button">Add New Message!</button>
+        <div id="messages">
+            <h2>Existing Messages</h2>
+        </div>
+        <a href="index.html" class="back-link">Back to main page</a>
+    </div>
+
+    <script>
+        const messageInput = document.getElementById('newMessage');
+        const addButton = document.getElementById('addButton');
+        const messagesContainer = document.getElementById('messages');
+
+        addButton.addEventListener('click', function() {
+            const messageText = messageInput.value.trim();
+            if (messageText !== '') {
+                const newMessageElement = document.createElement('p');
+                newMessageElement.classList.add('message');
+                newMessageElement.textContent = messageText;
+                messagesContainer.appendChild(newMessageElement);
+                messageInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
